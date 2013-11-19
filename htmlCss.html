@@ -1,0 +1,157 @@
+<!DOCTYPE>
+<html>
+<head>
+<title> GS </title>
+<style>
+	body
+	{
+	padding : 30px;
+	}
+	
+	thead:hover
+	{ 
+	background-color:FF99CC;
+	}
+
+	thead
+	{
+		background-color: 9933CC;
+		font-size : 25px
+		color:white;
+		border-style: double;
+	}
+	
+	thead tr td
+	{ 
+		color: white;
+		font-family: serif;
+		font-weight:bold;
+		font-stretch:ultra-expanded;
+		padding:0.5cm;
+	}
+	
+	#tabel
+	{
+	border : 3px solid black;
+	border-collapse:collapse;
+	width:40%;
+	box-shadow: 10px 10px 10px #888888;
+	
+	}
+	
+	#tabel tbody
+	{
+		border : 3px solid black;
+		text-align : center;
+		font-family: georgia;
+		//background-color: 006666;
+		color: yellow;
+	}
+	td
+	{
+	border: 1px solid black;
+	text-align : center;
+	//overflow:scroll;
+	}
+	
+	.alb
+	{
+		background-color : CCCCCC;
+	}
+	
+	.alb:hover
+	{
+		color:green;
+	}
+	
+	.negru
+	{
+		background-color : CC99CC;
+	}
+	
+	.negru:hover
+	{
+		color:red;
+	}
+	
+	#divform
+	{
+	width: 300px;
+		border: 1px solid black;
+		padding: 10px;
+		background-color :grey;
+	}
+	
+	
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+
+ $(function() {
+	$("#btnAdd").click(function () {
+	
+	var rand= $("<tr></tr>")
+                        .append($("<td></td>").append($("#nume").val()))
+                        .append($("<td></td>").append($("#prenume").val()))
+                        .append($("<td></td>").append($("#facultate").val()));
+					  $('tbody').append(rand);
+	});
+	
+	$('#formular').submit(function(e) {
+          e.preventDefault();  
+	});	
+
+	
+	$("td").click(function(){	
+		 $(this).html(' ');  //$(this).css('display','none');
+	});
+	
+ });
+                                      
+ 
+</script>
+</head>
+<body>
+
+<table id="tabel">
+	<thead>
+		<tr> 
+			<td> Nume </td>
+			<td> Prenume </td>
+			<td> Facultate </td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr class="alb">
+			<td> Schipor </td>
+			<td> Georgiana </td>
+			<td> Cibernetica </td>
+		</tr>
+		<tr class="negru">
+			<td> Anton </td>
+			<td> Catalin </td>
+			<td> Medicina </td>
+		</tr>
+		<tr class="alb">
+			<td> Bursuc </td>
+			<td> Andrei </td>
+			<td> Mecanica </td>
+		</tr>
+		
+	</tbody>
+</table>
+
+<br>
+<div id="divform">
+	<form id="formular">
+	<caption id="cap"> Introduceti datele: </caption> <br>
+		Nume: <input type="text" id="nume"><br>
+		Prenume: <input type="text" id="prenume"><br>
+		Facultate: <input type="text" id="facultate"> <input type="submit" id="btnAdd">
+	</form>
+</div>
+ 
+
+
+</body>
+</html>
