@@ -115,26 +115,23 @@
 			}
 	};
  
-	$("#btnAdd").click(function () {
-		var idul;
+	$("#formular").submit(function(e) {
+        e.preventDefault();  
+		var clasaTipRand;
 		if($('table tbody tr').length % 2 == 0)
-			idul="alb";
+			clasaTipRand="alb";
 		else
-			idul="negru";
-		var rand= $("<tr class=" + idul + "></tr>")
-							.append($("<td></td>").append($("#nume").val()))
-							.append($("<td></td>").append($("#prenume").val()))
-							.append($("<td></td>").append($("#varsta").val()))
-							.append($("<td></td>").append($("#departament").val()))
-							.append($("<td></td>").append($("#dataAng").val()))
-							.append($("<td></td>").append($("#pozitia").val()));
+			clasaTipRand="negru";
+		var rand= $("<tr class=" + clasaTipRand + "></tr>")
+			.append($("<td></td>").append($("#nume").val()))
+			.append($("<td></td>").append($("#prenume").val()))
+			.append($("<td></td>").append($("#varsta").val()))
+			.append($("<td></td>").append($("#departament").val()))
+			.append($("<td></td>").append($("#dataAng").val()))
+			.append($("<td></td>").append($("#pozitia").val()));
 		$('tbody').append(rand);
 		$("td").click(stergereCelule);
 	});
-	
-	$('#formular').submit(function(e) {
-          e.preventDefault();  
-	});	
 
 	$("td").click(stergereCelule);	
 	
@@ -215,7 +212,5 @@
 	</form>
 </div>
  
-
-
 </body>
 </html>
