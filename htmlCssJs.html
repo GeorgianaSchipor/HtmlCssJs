@@ -102,6 +102,7 @@
 <script>
 
  $(function() {
+ 
 	var stergereCelule = function(){
 		$(this).html(" ");  
 		var non_empty_cell=0;
@@ -114,6 +115,19 @@
 				$(this).parent().remove();
 			}
 	};
+	
+	$("td").dblclick(function(){
+		var selectedTd=$(this);
+		var val=selectedTd.text();
+		selectedTd.text(" ");
+		var tempInput =  $('<input>').attr('type','text').attr('value',val)  ;
+		selectedTd.append(tempInput);
+		
+		tempInput.keypress(function(keyEvent){
+			if(keyEvent.which === 13)
+				selectedTd.text(tempInput.val());
+		});
+	});
  
 	$("#formular").submit(function(e) {
         e.preventDefault();  
@@ -130,10 +144,11 @@
 			.append($("<td></td>").append($("#dataAng").val()))
 			.append($("<td></td>").append($("#pozitia").val()));
 		$('tbody').append(rand);
-		$("td").click(stergereCelule);
+		//$("td").click(stergereCelule);
 	});
 
-	$("td").click(stergereCelule);	
+	
+	//$("td").click(stergereCelule);	
 	
  });
                                       
