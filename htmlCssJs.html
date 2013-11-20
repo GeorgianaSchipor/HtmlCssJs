@@ -1,0 +1,236 @@
+<!DOCTYPE>
+<html>
+<head>
+<title> GS </title>
+<style>
+	body
+	{
+		padding : 30px;
+	}
+	
+		thead:hover
+	{ 
+		background-color:FF99CC;
+	}
+
+	thead
+	{
+		background-color: 9933CC;
+		font-size : 25px
+		color:white;
+		border-style: double;
+	}
+	
+	thead tr td
+	{ 
+		color: white;
+		font-family: serif;
+		font-weight:bold;
+		font-stretch:ultra-expanded;
+		padding:0.5cm;
+	}
+	
+	#tabel
+	{
+		border : 3px solid black;
+		border-collapse:collapse;
+		width:40%;
+		box-shadow: 10px 10px 10px #888888;
+	}
+	
+	#tabel tbody
+	{
+		text-align : center;
+		font-family: georgia;
+		color: yellow;
+	}
+	td
+	{
+		border: 1px solid black;
+		text-align : center;
+		//overflow:scroll;
+	}
+	
+	.alb
+	{
+		background-color : CCCCCC;
+	}
+	
+	.alb:hover
+	{
+		color:green;
+	}
+	
+	.negru
+	{
+		background-color : CC99CC;
+	}
+	
+	.negru:hover
+	{
+		color:red;
+	}
+	
+	#divform
+	{
+		border: 1px solid black;
+		padding: 10px;
+		width: 300px;
+		background-color: FFFFCC;
+	}
+	
+	#formular input 
+	{
+        width: 100%;
+        clear: both;
+		background-color: FF6600;
+		font-size : 15px;
+    }
+	
+	#btnAdd
+	{
+		border: 3px solid black;
+	}
+	
+	#btnAdd:hover
+	{
+		background-color: FF9933;
+	}
+	
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+
+ $(function() {
+	$("#btnAdd").click(function () {
+		var idul;
+		if($('table tbody tr').length % 2 == 0)
+			idul="alb";
+		else
+			idul="negru";
+		var rand= $("<tr class=" + idul + "></tr>")
+							.append($("<td></td>").append($("#nume").val()))
+							.append($("<td></td>").append($("#prenume").val()))
+							.append($("<td></td>").append($("#varsta").val()))
+							.append($("<td></td>").append($("#departament").val()))
+							.append($("<td></td>").append($("#dataAng").val()))
+							.append($("<td></td>").append($("#pozitia").val()));
+		$('tbody').append(rand);
+		$("td").click(function(){	
+			$(this).html(" ");
+		});
+	});
+	
+	$('#formular').submit(function(e) {
+          e.preventDefault();  
+	});	
+
+	$("td").click(function(){	
+	     $(this).html(" ");  
+		// SAU:
+		// $(this).css("display","none"); 
+		// SAU:
+		// var bg=$(this).css("background-color");
+		// $(this).html().css("color",bg);		
+		// SAU -dispare si reapare-:
+		/*if( $(this).children('p').length > 0 ){
+			
+			var cop=$(this).children('p');
+			
+			if(cop.css('display')=='none'){
+				cop.css("display","block");
+			}
+			
+			else{
+				cop.css("display","none")
+			}	
+		}
+		else{
+			var copil=$("<p style='display:none'> "+ $(this).html() +" </p>");
+			$(this).html(" ");
+			$(this).append(copil);	
+		} 
+		*/
+	});	
+	
+ });
+                                      
+ 
+</script>
+</head>
+<body>
+
+<table id="tabel">
+	<thead>
+		<tr> 
+			<td> NUME </td>
+			<td> PRENUME </td>
+			<td> VARSTA </td>
+			<td> DEPARTAMENT </td>
+			<td> DATA ANGAJARII </td>
+			<td> POZITIA OCUPATA </td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr class="alb">
+			<td> Schipor </td>
+			<td> Georgiana </td>
+			<td> 21 </td>
+			<td> HR </td>
+			<td> 10.05.2007 </td>
+			<td> asistent </td>
+		</tr>
+		<tr class="negru">
+			<td> Anton </td>
+			<td> Catalin </td>
+			<td> 33 </td>
+			<td> IT </td>
+			<td> 25.04.2009 </td>
+			<td> programator </td>
+		</tr>
+		<tr class="alb">
+			<td> Bursuc </td>
+			<td> Andrei </td>
+			<td> 40 </td>
+			<td> financiar </td>
+			<td> 9.09.2011 </td>
+			<td> contabil </td>
+		</tr>
+		<tr class="negru">
+			<td> Iacob </td>
+			<td> Paula </td>
+			<td> 26 </td>
+			<td> IT </td>
+			<td> 10.08.2012 </td>
+			<td> tester </td>
+		</tr>
+		<tr class="alb">
+			<td> Galan </td>
+			<td> Ana </td>
+			<td> 26 </td>
+			<td> IT </td>
+			<td> 12.04.2013 </td>
+			<td> analist </td>
+		</tr>
+		
+	</tbody>
+</table>
+
+<br>
+<div id="divform">
+	<form id="formular">
+	<caption id="cap"> INTRODUCETI DATELE: </caption> <br>
+		Nume: <input type="text" id="nume"><br>
+		Prenume: <input type="text" id="prenume"><br>
+		Varsta: <input type="text" id="varsta"> <br>
+		Departament: <input type="text" id="departament"><br>
+		Data angajarii: <input type="text" id="dataAng"><br>
+		Pozitia ocupata: <input type="text" id="pozitia"><br>
+		<input type="submit" value= "trimite date" id="btnAdd">
+	</form>
+</div>
+ 
+
+
+</body>
+</html>
