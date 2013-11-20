@@ -102,6 +102,19 @@
 <script>
 
  $(function() {
+	var stergereCelule = function(){
+		$(this).html(" ");  
+		var non_empty_cell=0;
+			$(this).siblings().each(function(){
+				if($(this).html()!=' ') {
+					non_empty_cell++;
+				}
+			});
+			if(non_empty_cell===0){
+				$(this).parent().remove();
+			}
+	};
+ 
 	$("#btnAdd").click(function () {
 		var idul;
 		if($('table tbody tr').length % 2 == 0)
@@ -116,42 +129,14 @@
 							.append($("<td></td>").append($("#dataAng").val()))
 							.append($("<td></td>").append($("#pozitia").val()));
 		$('tbody').append(rand);
-		$("td").click(function(){	
-			$(this).html(" ");
-		});
+		$("td").click(stergereCelule);
 	});
 	
 	$('#formular').submit(function(e) {
           e.preventDefault();  
 	});	
 
-	$("td").click(function(){	
-	     $(this).html(" ");  
-		// SAU:
-		// $(this).css("display","none"); 
-		// SAU:
-		// var bg=$(this).css("background-color");
-		// $(this).html().css("color",bg);		
-		// SAU -dispare si reapare-:
-		/*if( $(this).children('p').length > 0 ){
-			
-			var cop=$(this).children('p');
-			
-			if(cop.css('display')=='none'){
-				cop.css("display","block");
-			}
-			
-			else{
-				cop.css("display","none")
-			}	
-		}
-		else{
-			var copil=$("<p style='display:none'> "+ $(this).html() +" </p>");
-			$(this).html(" ");
-			$(this).append(copil);	
-		} 
-		*/
-	});	
+	$("td").click(stergereCelule);	
 	
  });
                                       
